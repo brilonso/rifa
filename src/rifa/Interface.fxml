@@ -7,50 +7,64 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rifa.InterfaceController">
+<AnchorPane id="AnchorPane" prefHeight="572.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rifa.InterfaceController">
     <children>
-      <TabPane prefHeight="411.0" prefWidth="379.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="1.0" layoutY="1.0" prefHeight="572.0" prefWidth="550.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Inicio">
                <content>
-                  <Pane prefHeight="350.0" prefWidth="340.0">
+                  <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="530.0" prefWidth="542.0">
                      <children>
-                        <Label layoutX="125.0" layoutY="14.0" prefHeight="19.0" prefWidth="131.0" text="Programa para Rifa" />
-                        <Label layoutX="80.0" layoutY="49.0" prefHeight="16.0" prefWidth="208.0" text="Escoja la cantidad de digitos" />
-                        <ComboBox fx:id="digitos" layoutX="115.0" layoutY="84.0" prefWidth="150.0" promptText="Digitos" />
-                        <Label contentDisplay="CENTER" layoutX="14.0" layoutY="145.0" prefHeight="51.0" prefWidth="352.0" text="Numero de final (introduzca el numero sin 0 delante ej: 99)" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
-                        <TextField fx:id="fin" layoutX="99.0" layoutY="206.0" />
-                        <Button fx:id="generar" layoutX="131.0" layoutY="262.0" mnemonicParsing="false" onAction="#GenerarTabla" prefHeight="24.0" prefWidth="107.0" text="Generar" />
+                        <Label layoutX="210.0" layoutY="67.0" prefHeight="19.0" prefWidth="131.0" text="Programa para Rifa" />
+                        <Label layoutX="185.0" layoutY="111.0" prefHeight="16.0" prefWidth="208.0" text="Escoja la cantidad de digitos" />
+                        <ComboBox fx:id="digitos" layoutX="200.0" layoutY="197.0" prefWidth="150.0" promptText="Digitos" />
+                        <Button fx:id="generar" layoutX="228.0" layoutY="291.0" mnemonicParsing="false" onAction="#GenerarTabla" prefHeight="24.0" prefWidth="107.0" text="Generar" />
+                        <Button fx:id="guardar" layoutX="87.0" layoutY="376.0" mnemonicParsing="false" onAction="#guardas" prefHeight="30.0" prefWidth="85.0" text="Guardar" />
+                        <Button layoutX="418.0" layoutY="376.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="85.0" text="Cargar" />
                      </children>
                   </Pane>
                </content>
             </Tab>
           <Tab text="2 Digitos">
                <content>
-                  <TableView fx:id="box" prefHeight="200.0" prefWidth="200.0">
-                    <columns>
-                      <TableColumn id="num" fx:id="numero" prefWidth="75.0" text="Numero" />
-                      <TableColumn id="nombre" prefWidth="75.0" text="Nombre" />
-                    </columns>
-                  </TableView>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="box" editable="true" prefHeight="540.0" prefWidth="203.0">
+                           <columns>
+                              <TableColumn id="num" fx:id="numero" prefWidth="70.0" text="Numero" />
+                              <TableColumn id="nombre" fx:id="nombre" prefWidth="132.0" text="Nombre" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="316.0" layoutY="45.0" prefHeight="16.0" prefWidth="55.0" text="Nombre" />
+                        <TextField fx:id="name" layoutX="258.0" layoutY="86.0" />
+                        <Label layoutX="312.0" layoutY="180.0" prefHeight="16.0" prefWidth="63.0" text="Numeros" />
+                        <TextArea fx:id="number" layoutX="258.0" layoutY="213.0" prefHeight="87.0" prefWidth="178.0" />
+                        <Button fx:id="insert" layoutX="313.0" layoutY="367.0" mnemonicParsing="false" onAction="#InsertarTabla" text="Insertar" />
+                     </children>
+                  </Pane>
                </content></Tab>
             <Tab text="3 Digitos">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="box3" layoutX="1.0" layoutY="-1.0" prefHeight="381.0" prefWidth="379.0">
-                          <columns>
-                            <TableColumn fx:id="numero3" prefWidth="75.0" text="Numero" />
-                            <TableColumn fx:id="nombre3" prefWidth="75.0" text="Nombre" />
-                          </columns>
+                        <TableView fx:id="box3" editable="true" prefHeight="540.0" prefWidth="205.0">
+                           <columns>
+                              <TableColumn fx:id="numero3" prefWidth="70.0" text="Numero" />
+                              <TableColumn fx:id="nombre3" prefWidth="132.0" text="Nombre" />
+                           </columns>
                         </TableView>
+                        <Label layoutX="316.0" layoutY="45.0" prefHeight="16.0" prefWidth="55.0" text="Nombre" />
+                        <TextField layoutX="258.0" layoutY="86.0" />
+                        <Label layoutX="312.0" layoutY="180.0" prefHeight="16.0" prefWidth="63.0" text="Numeros" />
+                        <TextArea layoutX="258.0" layoutY="213.0" prefHeight="87.0" prefWidth="178.0" />
                      </children>
-                  </AnchorPane>
-              </content>
+                  </Pane>
+               </content>
             </Tab>
         </tabs>
       </TabPane>

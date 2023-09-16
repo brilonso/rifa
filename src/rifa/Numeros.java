@@ -4,6 +4,9 @@
  */
 package rifa;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
@@ -14,10 +17,31 @@ import javafx.collections.ObservableList;
  */
 public class Numeros {
     private StringProperty numero;
+    private StringProperty nombre;
     
-    public Numeros(String numero) {
+    public Numeros(String numero, String nombre) {
         this.numero = new SimpleStringProperty(numero);
+        this.nombre = new SimpleStringProperty(nombre);
     }
+
+    public String getNombre() {
+        return nombre.get();
+    }
+
+    public void setNombre(StringProperty nombre) {
+        this.nombre = nombre;
+    }
+
+    public Numeros(StringProperty nombre) {
+        this.nombre = nombre;
+    }
+    
+    public StringProperty PropertyNombre() {
+        return nombre;
+    }
+    
+    
+    
 
     public String getNumero() {
         return numero.get();
@@ -39,13 +63,15 @@ public class Numeros {
             if (i < 10) {
                 numeros.add(
                     new Numeros(    
-                        "0"+String.valueOf(i)
+                        "0"+String.valueOf(i),
+                        "?"
                     )
                 );
             } else{
                 numeros.add(
                     new Numeros(    
-                        String.valueOf(i)
+                        String.valueOf(i),
+                        "?"
                     )
                 );
             }
@@ -58,19 +84,22 @@ public class Numeros {
             if (i < 10) {
                 numeros.add(
                     new Numeros(    
-                        "00"+String.valueOf(i)
+                        "00"+String.valueOf(i),
+                        "?"
                     )
                 );
             } if (i >= 10 && i < 100) {
                 numeros.add(
                     new Numeros(    
-                        "0"+String.valueOf(i)
+                        "0"+String.valueOf(i),
+                        "?"
                     )
                 );
             } if (i >= 100){
                 numeros.add(
                     new Numeros(    
-                        String.valueOf(i)
+                        String.valueOf(i),
+                        "?"
                     )
                 );
             }
