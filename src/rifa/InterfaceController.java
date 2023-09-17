@@ -48,6 +48,7 @@ public class InterfaceController implements Initializable {
     private TableColumn<Numeros, String> numero;
 
     private ObservableList<Numeros> list;
+    private ObservableList<Numeros> list3;
     @FXML
     private TableColumn<Numeros, String> numero3;
     @FXML
@@ -222,6 +223,76 @@ public class InterfaceController implements Initializable {
         nombre.setCellValueFactory(
                  nombre -> nombre.getValue().PropertyNombre()
             );
+        conexion.close();
+    }
+
+    @FXML
+    private void CargarDatos(ActionEvent event) throws SQLException {
+        list = FXCollections.observableArrayList();
+        list3 = FXCollections.observableArrayList();
+        boolean r1 = false;
+        boolean r2 = false;
+        Connection conexion = DriverManager.getConnection(jdbcURL, username, password);
+        String sql = "SELECT * FROM RIFA2";
+        String sql2 = "SELECT * FROM RIFA3";
+        Statement statement = conexion.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        if (rs.isBeforeFirst()){
+            while (rs.next()){
+            list.add(
+                    new Numeros(
+                    rs.getString("ID"),
+                    rs.getString("NOMBRE")
+                    )
+            );
+        }
+        box.setItems(list);
+        numero.setCellValueFactory(
+                numero -> numero.getValue().PropertyNumero()
+            );
+        nombre.setCellValueFactory(
+                nombre -> nombre.getValue().PropertyNombre()
+            );
+            r1 = true;
+        }
+        statement = conexion.createStatement();
+        ResultSet rs2 = statement.executeQuery(sql2);
+        if(rs2.isBeforeFirst()){
+            list3.removeAll();
+            while (rs2.next()){
+                list3.add(
+                        new Numeros(
+                        rs2.getString("ID"),
+                        rs2.getString("NOMBRE")
+                        )
+                );
+            }
+            numero3.setCellValueFactory(
+                    numero -> numero.getValue().PropertyNumero()
+                );
+            nombre3.setCellValueFactory(
+                     nombre -> nombre.getValue().PropertyNombre()
+                );
+            box3.setItems(list3);
+            
+        r2 = true;
+        }
+        if(r1 == false){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Rifa");
+            alert.setHeaderText("Error rifa");
+            alert.setContentText("No hay rifa de 2 digitos o esta vacia");
+            alert.showAndWait();
+        }
+        if(r2 == false){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Rifa");
+            alert.setHeaderText("Error rifa");
+            alert.setContentText("No hay rifa de 3 digitos o esta vacia");
+            alert.showAndWait();
+        }
+        conexion.close();
+        
     }
 
 }

@@ -25,7 +25,7 @@
                         <ComboBox fx:id="digitos" layoutX="200.0" layoutY="197.0" prefWidth="150.0" promptText="Digitos" />
                         <Button fx:id="generar" layoutX="228.0" layoutY="291.0" mnemonicParsing="false" onAction="#GenerarTabla" prefHeight="24.0" prefWidth="107.0" text="Generar" />
                         <Button fx:id="guardar" layoutX="87.0" layoutY="376.0" mnemonicParsing="false" onAction="#guardas" prefHeight="30.0" prefWidth="85.0" text="Guardar" />
-                        <Button layoutX="418.0" layoutY="376.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="85.0" text="Cargar" />
+                        <Button layoutX="418.0" layoutY="376.0" mnemonicParsing="false" onAction="#CargarDatos" prefHeight="30.0" prefWidth="85.0" text="Cargar" />
                      </children>
                   </Pane>
                </content>
