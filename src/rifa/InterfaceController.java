@@ -27,6 +27,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Optional;
 import javafx.scene.control.ButtonType;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -69,6 +70,10 @@ public class InterfaceController implements Initializable {
     private TextField name3;
     @FXML
     private TextArea number3;
+    @FXML
+    private AnchorPane AnchorPane;
+    @FXML
+    private Button insert3;
 
     /**
      * Initializes the controller class.
@@ -227,14 +232,14 @@ public class InterfaceController implements Initializable {
         );
         conexion.close();
     }
-
+    @FXML
     private void InsertarTabla3(ActionEvent event) throws SQLException {
         box3.getItems().clear();
         Connection conexion = DriverManager.getConnection(jdbcURL, username, password);
         PreparedStatement instruccion = conexion.prepareStatement("UPDATE RIFA3 SET NOMBRE = ? WHERE ID = ?");
-        String[] p = number.getText().split(",");
+        String[] p = number3.getText().split(",");
         for (int i = 0; i < p.length; i++) {    //length is the property of the array  
-            instruccion.setString(1, name.getText());
+            instruccion.setString(1, name3.getText());
             instruccion.setString(2, p[i]);
             instruccion.executeUpdate();
         }
