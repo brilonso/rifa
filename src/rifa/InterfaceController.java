@@ -63,7 +63,7 @@ public class InterfaceController implements Initializable {
     private TextArea number;
     @FXML
     private Button insert;
-    String jdbcURL = "jdbc:h2:~/rifa";
+    String jdbcURL = "jdbc:h2:file:./BD/numeros";
     String username = "sa";
     String password = "";
     @FXML
