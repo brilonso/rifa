@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="572.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.flamebringer.rifa.FXMLController">
+    <children>
+      <TabPane layoutX="1.0" layoutY="1.0" prefHeight="572.0" prefWidth="550.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Inicio">
+               <content>
+                  <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="530.0" prefWidth="542.0">
+                     <children>
+                        <Label layoutX="210.0" layoutY="67.0" prefHeight="19.0" prefWidth="131.0" text="Programa para Rifa" />
+                        <Label layoutX="185.0" layoutY="111.0" prefHeight="16.0" prefWidth="208.0" text="Escoja la cantidad de digitos" />
+                        <ComboBox fx:id="digitos" layoutX="200.0" layoutY="197.0" prefWidth="150.0" promptText="Digitos" />
+                        <Button fx:id="generar" layoutX="228.0" layoutY="291.0" mnemonicParsing="false" onAction="#GenerarTabla" prefHeight="24.0" prefWidth="107.0" text="Generar" />
+                        <Button fx:id="guardar" layoutX="87.0" layoutY="376.0" mnemonicParsing="false" onAction="#guardas" prefHeight="30.0" prefWidth="85.0" text="Guardar" />
+                        <Button layoutX="418.0" layoutY="376.0" mnemonicParsing="false" onAction="#CargarDatos" prefHeight="30.0" prefWidth="85.0" text="Cargar" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+          <Tab text="2 Digitos">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="box" editable="true" prefHeight="540.0" prefWidth="203.0">
+                           <columns>
+                              <TableColumn id="num" fx:id="numero" prefWidth="70.0" text="Numero" />
+                              <TableColumn id="nombre" fx:id="nombre" prefWidth="132.0" text="Nombre" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="316.0" layoutY="45.0" prefHeight="16.0" prefWidth="55.0" text="Nombre" />
+                        <TextField fx:id="name" layoutX="258.0" layoutY="86.0" />
+                        <Label layoutX="312.0" layoutY="180.0" prefHeight="16.0" prefWidth="63.0" text="Numeros" />
+                        <TextArea fx:id="number" layoutX="258.0" layoutY="213.0" prefHeight="87.0" prefWidth="178.0" />
+                        <Button fx:id="insert" layoutX="313.0" layoutY="367.0" mnemonicParsing="false" onAction="#InsertarTabla" text="Insertar" />
+                     </children>
+                  </Pane>
+               </content></Tab>
+            <Tab text="3 Digitos">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="box3" editable="true" prefHeight="540.0" prefWidth="205.0">
+                           <columns>
+                              <TableColumn fx:id="numero3" prefWidth="70.0" text="Numero" />
+                              <TableColumn fx:id="nombre3" prefWidth="132.0" text="Nombre" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="316.0" layoutY="45.0" prefHeight="16.0" prefWidth="55.0" text="Nombre" />
+                        <TextField fx:id="name3" layoutX="258.0" layoutY="86.0" />
+                        <Label layoutX="312.0" layoutY="180.0" prefHeight="16.0" prefWidth="63.0" text="Numeros" />
+                        <TextArea fx:id="number3" layoutX="258.0" layoutY="213.0" prefHeight="87.0" prefWidth="178.0" />
+                        <Button fx:id="insert3" layoutX="313.0" layoutY="367.0" mnemonicParsing="false" onAction="#InsertarTabla3" text="Insertar" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+    </children>
+</AnchorPane>
