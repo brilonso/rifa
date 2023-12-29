@@ -34,6 +34,7 @@
                         </goals>
                         <configuration>
                             <excludeScope>system</excludeScope>
+                            <excludes>META-INF/*.SF,META-INF/*.DSA,META-INF/*.RSA</excludes>
                             <excludeGroupIds>junit,org.mockito,org.hamcrest</excludeGroupIds>
                             <outputDirectory>${project.build.directory}/classes</outputDirectory>
                         </configuration>
@@ -104,11 +105,26 @@
             </plugin>
         </plugins>
     </build>
+    <repositories>
+        
+    
+    <repository>
+<id>AsposeJavaAPI</id>
+<name>Aspose Java API</name>
+<url>https://repository.aspose.com/repo/</url>
+</repository>
+</repositories>
     <dependencies>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>2.2.224</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.aspose/aspose-cells -->
+        <dependency>
+            <groupId>com.aspose</groupId>
+            <artifactId>aspose-cells</artifactId>
+            <version>23.12</version>
         </dependency>
     </dependencies>
 </project>

@@ -45,6 +45,7 @@
                         <Label layoutX="312.0" layoutY="180.0" prefHeight="16.0" prefWidth="63.0" text="Numeros" />
                         <TextArea fx:id="number" layoutX="258.0" layoutY="213.0" prefHeight="87.0" prefWidth="178.0" />
                         <Button fx:id="insert" layoutX="313.0" layoutY="367.0" mnemonicParsing="false" onAction="#InsertarTabla" text="Insertar" />
+                        <Button fx:id="expo" layoutX="318.0" layoutY="451.0" mnemonicParsing="false" onAction="#Exportar" text="Exportar" />
                      </children>
                   </Pane>
                </content></Tab>

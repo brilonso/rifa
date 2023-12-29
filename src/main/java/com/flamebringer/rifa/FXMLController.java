@@ -1,6 +1,11 @@
 package com.flamebringer.rifa;
 
 
+import com.aspose.cells.Color;
+import com.aspose.cells.Font;
+import com.aspose.cells.Style;
+import com.aspose.cells.Workbook;
+import com.aspose.cells.Worksheet;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -63,9 +68,9 @@ public class FXMLController implements Initializable {
     @FXML
     private TextArea number3;
     @FXML
-    private AnchorPane AnchorPane;
-    @FXML
     private Button insert3;
+    @FXML
+    private Button expo;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -320,5 +325,60 @@ public class FXMLController implements Initializable {
         }
         conexion.close();
 
+    }
+
+    @FXML
+    private void Exportar(ActionEvent event) throws Exception {
+        Connection conexion = DriverManager.getConnection(jdbcURL, username, password);
+        String sql = "SELECT * FROM RIFA2";
+        Statement statement = conexion.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        Workbook wkb = new Workbook();
+        int count = 1;
+        int colu = 0;
+// Access the first worksheet of the workbook.
+        Worksheet worksheet = wkb.getWorksheets().get(0);
+        worksheet.getCells().setStandardHeight(25f);
+        worksheet.getCells().setStandardWidth(8f);
+        Color color = Color.getRed();
+        String[] col = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
+// Add relevant content in the cell
+        if (rs.isBeforeFirst()) {                 
+            while (rs.next()) {
+                if(colu == 10){
+                    colu = 0;
+                    count++;
+                }
+                if (!rs.getString("NOMBRE").equals("?")){
+                    Style style = worksheet.getCells().get(col[colu]+count).getStyle();
+                    Font font = style.getFont();
+                    font.setColor(color);
+                    worksheet.getCells().get(col[colu]+count).putValue(rs.getString("ID"));
+                    worksheet.getCells().get(col[colu]+count).setStyle(style);
+                    colu++;
+                }else{
+                System.out.println(rs.getString("ID"));
+                System.out.println(col[colu]+count);
+                worksheet.getCells().get(col[colu]+count).putValue(rs.getString("ID"));
+                colu++;
+                }
+            }
+                       
+                        
+                    }
+        /*for (int i = 0 ; i <= col.length ; i++) {
+                    for (int j = 0; j < 10 ; j++) {
+                        worksheet.getCells().get(col[j]+(i+1)).putValue(rs.getString("ID"));
+                        System.out.println(col[j]+(i+1));
+                }
+            }*/
+
+        /*worksheet.getCells().get("A1").putValue("ColumnA");
+        worksheet.getCells().get("B1").putValue("ColumnB");
+        worksheet.getCells().get("A2").putValue("ValueA");
+        worksheet.getCells().get("B2").putValue("ValueB");*/
+
+// Save the workbook as PNG file
+        wkb.save("Excel.png"); 
     }
 }
